@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -56,6 +57,8 @@ p {
 
 /* header */
 
+
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -70,6 +73,7 @@ p {
     text-decoration: none;
   }
 }
+
 
 /* footer */
 
@@ -95,4 +99,40 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* yield */
+
+.yield {
+  text-align: center;}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }

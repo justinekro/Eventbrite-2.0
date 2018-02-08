@@ -1,0 +1,25 @@
+<h1>Les utilisateurs de Eventbrite</h1>
+ 
+<table class="table table-hover">
+  <tr>
+    <th>Nom</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+  </tr>
+ 
+  <% @users.each do |user| %> 
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= link_to "Voir le profil", user_path(user) %></td>
+      <td><%= link_to "Editer le profil", edit_user_path(user) %></td>
+      <td> <%= link_to "Supprimer le profil", user_path(user),
+              method: :delete,
+              data: { confirm: 'Etes-vous sûr ?' } %> </td>
+
+    </tr>
+  <% end %>
+</table>
+
+<p> <%= link_to "Sign in!", new_user_path, class: "btn btn-primary center-block" %> </p>
