@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events
 
 	get "events/suscribe/:id", to: "events#suscribe"
+  get "events/:id/:id", to: "events#adduser"
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

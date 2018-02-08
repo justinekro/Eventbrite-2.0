@@ -30,3 +30,27 @@
     <% end %>
   </table>
 
+  <h2> Ajoutez des participants </h2>
+
+  <table class="table table-striped">
+  <tr>
+    <th>Nom</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+
+  </tr>
+ 
+  <% alluser.each do |user| %> 
+  <% unless @event.attendees.include? user %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to "Voir le profil", user_path(user) %></td>
+      <td><%= link_to "Ajoutez ce participant", { :controller => "events", :action => "adduser", :id => user.id, :test => @event.id}%></td>
+    </tr>
+  <% end %>
+  
+  <% end %>
+</table>
+

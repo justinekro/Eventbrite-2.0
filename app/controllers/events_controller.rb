@@ -34,6 +34,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def adduser  
+    @user = User.find(params[:id])
+    @event = Event.find(params[:test])
+ #   if 
+ #   @event.attendees.include? @user
+ #   flash[:danger] = "#{@user.name} participe déjà à l'événement !" 
+ #   redirect_to @event
+ #   else
+    @event.attendees << @user
+    flash[:success] = "#{@user.name} est ajouté à l'événement ! !" 
+    redirect_to @event
+ #   end
+  end
+
 	private
   	def event_params
       params.permit(:name, :description, :date, :place)
