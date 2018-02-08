@@ -1,10 +1,9 @@
 <h1>Nos super briters</h1>
  
-<table class="table table-hover">
+<table class="table table-striped">
   <tr>
     <th>Nom</th>
     <th>Email</th>
-    <th></th>
     <th></th>
 
   </tr>
@@ -19,5 +18,5 @@
 </table>
 
 <% unless logged_in? %>
-<p> <%= link_to "Sign up", new_user_path, class: "btn btn-success" %> or <%= link_to "Log in", login_path, class: "btn btn-primary" %> </p>
+<p class="text-center"> <%= link_to "Sign up", new_user_path, class: "btn btn-success" %> or <%= link_to "Log in", login_path, class: "btn btn-primary" %> </p>
 <% end%>

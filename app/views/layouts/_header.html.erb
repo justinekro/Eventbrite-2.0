@@ -4,6 +4,8 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Tous nos briters !", users_path %></li>
+
             <li><%= link_to "Créer mon événement", new_event_path %></li>
 
             <% if logged_in? %>

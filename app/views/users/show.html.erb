@@ -6,15 +6,18 @@
       	<%= @user.name %> 
       </h1>
       <p> <%= @user.email %>
-   <p> <%= link_to('Editer mon profil', edit_user_path) %> </p>
-
+      <% if logged_in? && current_user == @user %>
+        <p> <%= link_to('Editer mon profil', edit_user_path) %> </p>
+      <% end %>
     </section>
   </aside>
 </div>
 
 <h2> Evénements organisés par <%= @user.name %> à venir</h2>
 
-      <table class="table table-hover">
+<% if !@user.created_events.nil? %>
+
+      <table class="table table-striped">
   		<tr>
     	<th>Nom de l'événement</th>
     	<th>Date</th>
@@ -39,10 +42,16 @@
     <% end %>
 
   </table>
+  <% else %>
+  <p class="text-center"> <%= @user.name %> n'a aucun événement organisé à venir </p>
+
+  <% end %>
 
 <h2> Evénements organisés par <%= @user.name %> passés</h2>
 
-      <table class="table table-hover">
+<% if !@user.created_events.nil? %>
+
+      <table class="table table-striped">
       <tr>
       <th>Nom de l'événement</th>
       <th>Date</th>
@@ -67,10 +76,17 @@
 
   </table>
 
+  <% else %>
+  <p class="text-center"> <%= @user.name %> n'a aucun événement organisé passés </p>
+
+  <% end %>
+
  
 <h2> Evénements auxquels <%= @user.name %> participe </h2>
 
-      <table class="table table-hover">
+<% if !@user.attended_events.nil? %>
+
+      <table class="table table-striped">
       <tr>
       <th>Nom de l'événement</th>
       <th>Date</th>
@@ -89,4 +105,9 @@
     </tr>
     <% end %>
   </table>
+
+  <% else %>
+  <p class="text-center"> <%= @user.name %> ne participe à aucun événement</p>
+
+  <% end %>
 

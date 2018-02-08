@@ -1,3 +1,5 @@
+<% if logged_in? && current_user == @user %>
+
 <h1> Editer mon profil </h1>
 
 <%= form_tag user_path(@user), method: :put do %>
@@ -40,3 +42,8 @@
  <p> <%= link_to "Supprimer le profil", user_path(@user),
               method: :delete,
               data: { confirm: 'Etes-vous sûr ?' } %> </p>
+
+<% else %>
+<p class="text-center"> Petit filou, ce n'est pas votre profil ! </p>
+<p class="text-center"><%= link_to "Log in", login_path, class: "btn btn-primary" %> </p>
+<% end %>

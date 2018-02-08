@@ -1,7 +1,7 @@
 <% if logged_in? %>
 
 <h1> Créer un nouvel event !</h1>
-<p> <%= @current_user.name %>, merci de renseigner ces informations afin de créer votre événement ! </p>
+<p class="text-center"> <%= @current_user.name %>, merci de renseigner ces informations afin de créer votre événement ! </p>
 
 <%= form_tag (events_path) do %>
  

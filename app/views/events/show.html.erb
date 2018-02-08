@@ -12,7 +12,7 @@
 
 <h2> Liste des participants </h2>
 
-<table class="table table-hover">
+<table class="table table-striped">
       <tr>
       <th>Nom</th>
       <th>Adresse mail</th>
@@ -24,7 +24,7 @@
     <tr>
     <td> <%= attendee.name %> </td>
     <td> <%= attendee.email %> </td>
-    <td> <%= link_to('En voir plus', user_path(attendee)) %> </td>
+    <td> <%= link_to('Voir le profil du participant', user_path(attendee)) %> </td>
 
     </tr>
     <% end %>
