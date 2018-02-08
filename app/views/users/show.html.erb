@@ -1,11 +1,39 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= @user.name %>
+      <h1> 
+      	<%= gravatar_for @user %>
+      	<%= @user.name %> 
       </h1>
+      <p> <%= @user.email %>
+   <p> <%= link_to('Editer mon profil', edit_user_path) %> </p>
+
     </section>
   </aside>
 </div>
 
-<p> <%= link_to('Editer mon profil', edit_user_path) %> </p> 
+<h2> Evénements organisés </h2>
+
+      <table class="table table-hover">
+  		<tr>
+    	<th>Nom de l'événement</th>
+    	<th>Date</th>
+    	<th>Lieu</th>
+   		<th></th>
+   		<th></th>
+ 	 	</tr>
+		
+	<% @user.created_events.each do |event| %> 
+		<tr>
+		<td> <%= event.name %> </td>
+		<td> <%= event.name %> </td>
+		<td> <%= event.name %> </td>
+		<td> <%= link_to('En voir plus', event_path(event)) %> </td>
+		<% if logged_in? %>
+		<td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
+		<% end %>
+		</tr>
+		<% end %>
+ 
+
+
