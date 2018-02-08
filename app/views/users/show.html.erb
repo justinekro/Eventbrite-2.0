@@ -12,7 +12,7 @@
   </aside>
 </div>
 
-<h2> Evénements organisés </h2>
+<h2> Evénements organisés par <%= @user.name %></h2>
 
       <table class="table table-hover">
   		<tr>
@@ -34,6 +34,27 @@
 		<% end %>
 		</tr>
 		<% end %>
+  </table>
  
+<h2> Evénements auxquels <%= @user.name %> participe </h2>
 
+      <table class="table table-hover">
+      <tr>
+      <th>Nom de l'événement</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th></th>
+
+    </tr>
+
+  <% @user.attended_events.each do |event| %> 
+    <tr>
+    <td> <%= event.name %> </td>
+    <td> <%= event.name %> </td>
+    <td> <%= event.name %> </td>
+    <td> <%= link_to('En voir plus', event_path(event)) %> </td>
+
+    </tr>
+    <% end %>
+  </table>
 

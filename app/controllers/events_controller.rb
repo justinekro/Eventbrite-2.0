@@ -21,6 +21,19 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def suscribe
+    @event = Event.find(params[:id])
+    if 
+    @event.attendees.include? current_user
+    flash[:error] = "Vous participez déjà à l'événement !" 
+    redirect_to @event
+    else
+    @event.attendees << current_user
+    flash[:success] = "Vous participez à l'événement !" 
+    redirect_to @event
+    end
+  end
+
 	private
   	def event_params
       params.permit(:name, :description, :date, :place)

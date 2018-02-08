@@ -1,16 +1,31 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @event.name %>
-      </h1>
-      <p> Description : <%= @event.description %> </p>
-      <p> Lieu : <%= @event.place %> </p>
-      <p> Date : <%= @event.date %> </p>
-      <p> Créateur : <%= @event.creator.name %> </p>
-
-    </section>
-  </aside>
+<div class="rounded-top">
+<h1>
+  <%= @event.name %>
+</h1>
+<p> Description : <%= @event.description %> </p>
+<p> Lieu : <%= @event.place %> </p>
+<p> Date : <%= @event.date %> </p>
+<p> Créateur : <%= @event.creator.name %> </p>
 </div>
+  
+  <%= link_to "Rejoindre l'événement", { :controller => "events", :action => "suscribe"}, class: "btn btn-success" %>
 
-<p> <%= link_to('Editer mon événement', '#') %> </p> 
+<h2> Liste des invités </h2>
+
+<table class="table table-hover">
+      <tr>
+      <th>Nom</th>
+      <th>Adresse mail</th>
+
+    </tr>
+
+  <% @event.attendees.each do |attendee| %> 
+    <tr>
+    <td> <%= attendee.name %> </td>
+    <td> <%= attendee.email %> </td>
+    <td> <%= link_to('En voir plus', user_path(attendee)) %> </td>
+
+    </tr>
+    <% end %>
+  </table>
+

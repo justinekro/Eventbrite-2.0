@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :events
 
+	get "events/suscribe/:id", to: "events#suscribe"
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
