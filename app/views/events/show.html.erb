@@ -2,13 +2,13 @@
 <h1>
   <%= @event.name %>
 </h1>
-<p> Description : <%= @event.description %> </p>
-<p> Lieu : <%= @event.place %> </p>
-<p> Date : <%= @event.date.strftime("%d-%m-%Y") %> </p>
-<p> Créateur : <%= @event.creator.name %> </p>
+<p class="text-center"> Description : <%= @event.description %> </p>
+<p class="text-center"> Lieu : <%= @event.place %> </p>
+<p class="text-center"> Date : <%= @event.date.strftime("%d-%m-%Y") %> </p>
+<p class="text-center"> Créateur : <%= @event.creator.name %> </p>
 </div>
   
-  <%= link_to "Rejoindre l'événement", { :controller => "events", :action => "suscribe"}, class: "btn btn-success" %>
+<p class="text-center">  <%= link_to "Rejoindre l'événement", { :controller => "events", :action => "suscribe"}, class: "btn btn-success" %> </p>
 
 <h2> Liste des participants </h2>
 
@@ -30,7 +30,7 @@
     <% end %>
   </table>
 
-  <% if logged_in? && current_user == @user %>
+  <% if logged_in? %>
 
   <h2> Ajoutez des participants </h2>
 

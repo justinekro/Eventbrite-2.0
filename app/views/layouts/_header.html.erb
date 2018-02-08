@@ -3,10 +3,10 @@
         <%= link_to "Eventbrite (ou presque)", root_path, id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Tous nos events", root_path %></li>
             <li><%= link_to "Tous nos briters !", users_path %></li>
 
-            <li><%= link_to "Créer mon événement", new_event_path %></li>
+            <li><%= link_to "Créer mon event", new_event_path %></li>
 
             <% if logged_in? %>
             <li class="dropdown">

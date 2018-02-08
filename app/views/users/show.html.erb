@@ -15,7 +15,7 @@
 
 <h2> Evénements organisés par <%= @user.name %> à venir</h2>
 
-<% if !@user.created_events.nil? %>
+<% if !@user.created_events.empty? %>
 
       <table class="table table-striped">
   		<tr>
@@ -24,7 +24,7 @@
     	<th>Lieu</th>
 
    		<th></th>
-      <th></th>
+
 
  	 	</tr>
 		
@@ -35,9 +35,6 @@
 		<td> <%= event.date.strftime("%d-%m-%Y")  %> </td>
 		<td> <%= event.place %> </td>
 		<td> <%= link_to('En voir plus', event_path(event)) %> </td>
-		<% if !current_user.nil? && current_user.id == event.creator.id %>
-		<td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
-		<% end %>
 		</tr>
 		<% end %>
     <% end %>
@@ -50,14 +47,13 @@
 
 <h2> Evénements organisés par <%= @user.name %> passés</h2>
 
-<% if !@user.created_events.nil? %>
+<% if !@user.created_events.empty? %>
 
       <table class="table table-striped">
       <tr>
       <th>Nom de l'événement</th>
       <th>Date</th>
       <th>Lieu</th>
-      <th></th>
       <th></th>
     </tr>
     
@@ -68,9 +64,7 @@
     <td> <%= event.date.strftime("%d-%m-%Y") %> </td>
     <td> <%= event.place %> </td>
     <td> <%= link_to('En voir plus', event_path(event)) %> </td>
-    <% if logged_in? %>
-    <td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
-    <% end %>
+
     </tr>
     <% end %>
     <% end %>
@@ -78,14 +72,14 @@
   </table>
 
   <% else %>
-  <p class="text-center"> <%= @user.name %> n'a aucun événement organisé passés </p>
+  <p class="text-center"> <%= @user.name %> n'a aucun événement organisé passé </p>
 
   <% end %>
 
  
 <h2> Evénements auxquels <%= @user.name %> participe </h2>
 
-<% if !@user.attended_events.nil? %>
+<% if !@user.attended_events.empty? %>
 
       <table class="table table-striped">
       <tr>
