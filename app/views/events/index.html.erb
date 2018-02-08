@@ -14,7 +14,7 @@
   </tr>
  
   <% @events.each do |event|%> 
-  <% if event.date > Date.today %>
+  <% if event.date >= Date.today %>
     <tr>
       <td><%= event.name %></td>
       <td><%= event.date.strftime("%d-%m-%Y") %></td>
