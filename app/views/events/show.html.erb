@@ -30,6 +30,8 @@
     <% end %>
   </table>
 
+  <% if logged_in? && current_user == @user %>
+
   <h2> Ajoutez des participants </h2>
 
   <table class="table table-striped">
@@ -53,4 +55,9 @@
   
   <% end %>
 </table>
-
+ 
+ <% else %>
+ <h2> Vous souhaitez ajouter des participants à cet événement ? </h2>
+ <p class="text-center"><%= link_to "Log in", login_path, class: "btn btn-primary" %> </p>
+ 
+ <% end %>
