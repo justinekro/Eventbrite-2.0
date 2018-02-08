@@ -12,7 +12,7 @@
   </aside>
 </div>
 
-<h2> Evénements organisés par <%= @user.name %></h2>
+<h2> Evénements organisés par <%= @user.name %> à venir</h2>
 
       <table class="table table-hover">
   		<tr>
@@ -23,18 +23,49 @@
    		<th></th>
  	 	</tr>
 		
-	<% @user.created_events.each do |event| %> 
+	<% @user.created_events.each do |event| %>
+  <% if event.date > Date.today %> 
 		<tr>
 		<td> <%= event.name %> </td>
-		<td> <%= event.name %> </td>
-		<td> <%= event.name %> </td>
+		<td> <%= event.date %> </td>
+		<td> <%= event.place %> </td>
 		<td> <%= link_to('En voir plus', event_path(event)) %> </td>
 		<% if logged_in? %>
 		<td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
 		<% end %>
 		</tr>
 		<% end %>
+    <% end %>
+
   </table>
+
+<h2> Evénements organisés par <%= @user.name %> passés</h2>
+
+      <table class="table table-hover">
+      <tr>
+      <th>Nom de l'événement</th>
+      <th>Date</th>
+      <th>Lieu</th>
+      <th></th>
+      <th></th>
+    </tr>
+    
+  <% @user.created_events.each do |event| %> 
+  <% if event.date < Date.today %> 
+    <tr>
+    <td> <%= event.name %> </td>
+    <td> <%= event.date %> </td>
+    <td> <%= event.place %> </td>
+    <td> <%= link_to('En voir plus', event_path(event)) %> </td>
+    <% if logged_in? %>
+    <td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
+    <% end %>
+    </tr>
+    <% end %>
+    <% end %>
+
+  </table>
+
  
 <h2> Evénements auxquels <%= @user.name %> participe </h2>
 
@@ -50,8 +81,8 @@
   <% @user.attended_events.each do |event| %> 
     <tr>
     <td> <%= event.name %> </td>
-    <td> <%= event.name %> </td>
-    <td> <%= event.name %> </td>
+    <td> <%= event.date %> </td>
+    <td> <%= event.place %> </td>
     <td> <%= link_to('En voir plus', event_path(event)) %> </td>
 
     </tr>
