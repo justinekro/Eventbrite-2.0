@@ -57,8 +57,6 @@ p {
 
 /* header */
 
-
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -135,4 +133,11 @@ input, textarea, select, .uneditable-input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/* table */
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
 }

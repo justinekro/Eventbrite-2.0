@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'events/create'
 
   get 'sessions/new'
-  root 'users#index'
+  root 'events#index'
   resources :users
   resources :events
 

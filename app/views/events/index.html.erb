@@ -1,0 +1,27 @@
+<h1>Tous nos super events</h1>
+ 
+<table class="table table-hover">
+  <tr>
+    <th>Nom de l'événement</th>
+    <th>Date de l'événement</th>
+    <th>Lieu de l'événement</th>
+    <th>Créé par</th>
+    <th></th>
+
+  </tr>
+ 
+  <% @events.each do |event| %> 
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.date %></td>
+      <td><%= event.place %></td>
+      <td><%= event.creator.name %></td>
+      <td><%= link_to "Voir l'événement", event_path(event) %></td>
+
+    </tr>
+  <% end %>
+</table>
+
+<% unless logged_in? %>
+<p> <%= link_to "Créer mon événement", new_event_path, class: "btn btn-success" %></p>
+<% end%>
