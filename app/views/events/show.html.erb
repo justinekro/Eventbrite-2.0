@@ -32,6 +32,7 @@
 
   <% if logged_in? %>
 
+  <% if @event.date >= Date.today %> 
   <h2> Ajoutez des participants </h2>
 
   <table class="table table-striped">
@@ -43,6 +44,7 @@
 
   </tr>
  
+
   <% alluser.each do |user| %> 
   <% unless @event.attendees.include? user %>
     <tr>
@@ -61,3 +63,6 @@
  <p class="text-center"><%= link_to "Log in", login_path, class: "btn btn-primary" %> </p>
  
  <% end %>
+ <% else %>
+ <h2> Cet événement est passé. Vous ne pouvez plus ajouter de participants</h2>
+  <% end %>
