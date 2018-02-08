@@ -1,19 +1,18 @@
 class SessionsController < ApplicationController
   
   def create
-    if user = User.find_by(name: params[:session][:name].downcase)
- #   flash.now[:notice] = "Vous êtes connecté !"  
-    log_in user
-    redirect_to user
-    else
-    flash.now[:danger] = "Cet utilisateur n'existe pas !"
-    render 'new'
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      log_in user
+      redirect_to user, success: "Vous êtes connecté ! Bienvenue sur le site qui vous donnera la réponse à la question de l'univers..."     
+    else 
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 
   def destroy
-    log_out if logged_in?
-    flash[:success] = 'Vous êtes bien déconnecté'
+    log_out
     redirect_to root_url
   end
 

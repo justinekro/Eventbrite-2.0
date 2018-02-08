@@ -14,10 +14,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Votre profil a bien été créé ! Bienvenue sur le site qui vous donnera la réponse à la question de l'univers..."
-
- # On login quand un nouvel user est créé     
- #     log_in @user
+      log_in @user
+      flash[:success] = "Votre profil a bien été créé ! Bienvenue sur Eventbrite 2.0"
       redirect_to @user
     else render 'new'
     end
@@ -43,7 +41,8 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.permit(:name)
+      params.permit(:name, :email, :password)
     end
+
 
 end

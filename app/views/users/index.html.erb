@@ -3,6 +3,7 @@
 <table class="table table-hover">
   <tr>
     <th>Nom</th>
+    <th>Email</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,6 +13,7 @@
   <% @users.each do |user| %> 
     <tr>
       <td><%= user.name %></td>
+      <td><%= user.email %></td>
       <td><%= link_to "Voir le profil", user_path(user) %></td>
       <td><%= link_to "Editer le profil", edit_user_path(user) %></td>
       <td> <%= link_to "Supprimer le profil", user_path(user),
