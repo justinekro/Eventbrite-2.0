@@ -17,7 +17,7 @@
   <% if event.date > Date.today %>
     <tr>
       <td><%= event.name %></td>
-      <td><%= event.date %></td>
+      <td><%= event.date.strftime("%d-%m-%Y") %></td>
       <td><%= event.place %></td>
       <td><%= event.creator.name %></td>
       <td><%= event.attendees.count %></td>
@@ -46,7 +46,7 @@
   <% if event.date < Date.today %>
     <tr>
       <td><%= event.name %></td>
-      <td><%= event.date %></td>
+      <td><%= event.date.strftime("%d-%m-%Y") %></td>
       <td><%= event.place %></td>
       <td><%= event.creator.name %></td>
       <td><%= event.attendees.count %></td>

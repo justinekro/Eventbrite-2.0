@@ -19,18 +19,19 @@
     	<th>Nom de l'événement</th>
     	<th>Date</th>
     	<th>Lieu</th>
+
    		<th></th>
-   		<th></th>
+
  	 	</tr>
 		
 	<% @user.created_events.each do |event| %>
   <% if event.date > Date.today %> 
 		<tr>
 		<td> <%= event.name %> </td>
-		<td> <%= event.date %> </td>
+		<td> <%= event.date.strftime("%d-%m-%Y")  %> </td>
 		<td> <%= event.place %> </td>
 		<td> <%= link_to('En voir plus', event_path(event)) %> </td>
-		<% if logged_in? %>
+		<% if !current_user.nil? && current_user.id == event.creator.id %>
 		<td> <%= link_to('Editer mon événement', edit_event_path(event)) %> </td>
 		<% end %>
 		</tr>
@@ -54,7 +55,7 @@
   <% if event.date < Date.today %> 
     <tr>
     <td> <%= event.name %> </td>
-    <td> <%= event.date %> </td>
+    <td> <%= event.date.strftime("%d-%m-%Y") %> </td>
     <td> <%= event.place %> </td>
     <td> <%= link_to('En voir plus', event_path(event)) %> </td>
     <% if logged_in? %>
@@ -81,7 +82,7 @@
   <% @user.attended_events.each do |event| %> 
     <tr>
     <td> <%= event.name %> </td>
-    <td> <%= event.date %> </td>
+    <td> <%= event.date.strftime("%d-%m-%Y") %> </td>
     <td> <%= event.place %> </td>
     <td> <%= link_to('En voir plus', event_path(event)) %> </td>
 
